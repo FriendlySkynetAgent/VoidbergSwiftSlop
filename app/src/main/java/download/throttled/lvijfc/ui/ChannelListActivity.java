@@ -142,6 +142,14 @@ public class ChannelListActivity extends BaseActivity {
                     allItems.add(ch);
                 } catch (Exception ignored) {}
             }
+
+            allItems.sort((a, b) -> {
+                String idA = a.optString("last_message_id", "0");
+                String idB = b.optString("last_message_id", "0");
+                if (idB.length() != idA.length()) return idB.length() - idA.length();
+                return idB.compareTo(idA);
+            });
+
             applyFilter(filterInput.getText().toString());
             setSpinner(false);
         }, () -> setSpinner(false));

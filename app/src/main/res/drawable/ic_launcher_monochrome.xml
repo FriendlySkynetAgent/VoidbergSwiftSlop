@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Foreground layer for the Fluxer adaptive icon.
+  Viewport 108×108 dp. The <group> scales the content to 75% of its
+  original size (pivot at the canvas centre, 54×54), shrinking the
+  content area from 60dp to ~45dp. This keeps all artwork safely
+  inside the 66dp safe zone and well clear of every OEM circular mask.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <group
+        android:pivotX="54"
+        android:pivotY="54"
+        android:scaleX="0.70"
+        android:scaleY="0.70">
+
+        <path
+            android:fillColor="#000000"
+            android:pathData="
+                M24,24 L32.57,24 L32.57,49.71 L24,49.71 Z
+                M49.71,32.57 L58.29,32.57 L58.29,49.71 L49.71,49.71 Z
+                M75.43,24 L84,24 L84,41.14 L75.43,41.14 Z
+                M32.57,24 L58.29,24 L58.29,32.57 L32.57,32.57 Z
+                M58.29,41.14 L84,41.14 L84,49.71 L58.29,49.71 Z
+                M24,58.29 L32.57,58.29 L32.57,84 L24,84 Z
+                M49.71,66.86 L58.29,66.86 L58.29,84 L49.71,84 Z
+                M75.43,58.29 L84,58.29 L84,75.43 L75.43,75.43 Z
+                M32.57,58.29 L58.29,58.29 L58.29,66.86 L32.57,66.86 Z
+                M58.29,75.43 L84,75.43 L84,84 L58.29,84 Z" />
+
+    </group>
+
+</vector>

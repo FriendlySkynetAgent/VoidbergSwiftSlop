@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Own message — right-aligned, accent-coloured bubble.
+  Attachment image sits below the bubble, same gravity, matching corner radius.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="12dp"
+    android:paddingTop="6dp"
+    android:paddingBottom="2dp">
+
+    <!-- Author name -->
+    <TextView
+        android:id="@+id/msg_author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginBottom="2dp"
+        android:layout_marginEnd="4dp"
+        android:textColor="@color/text_secondary"
+        android:textSize="11sp"
+        android:textStyle="bold" />
+
+    <!-- Reply indicator -->
+    <TextView
+        android:id="@+id/reply_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="3dp"
+        android:textColor="@color/text_secondary"
+        android:textSize="12sp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:maxWidth="240dp"
+        android:visibility="gone" />
+
+    <!-- Timestamp + bubble row -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:gravity="bottom"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/msg_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginEnd="6dp"
+            android:textColor="@color/text_secondary"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/msg_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_bubble_mine"
+            android:lineSpacingMultiplier="1.3"
+            android:maxWidth="260dp"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="8dp"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <!-- Attachment image -->
+    <ImageView
+        android:id="@+id/msg_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="4dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/bg_bubble_mine"
+        android:clipToOutline="true"
+        android:maxHeight="200dp"
+        android:maxWidth="260dp"
+        android:scaleType="fitCenter"
+        android:visibility="gone" />
+
+</LinearLayout>

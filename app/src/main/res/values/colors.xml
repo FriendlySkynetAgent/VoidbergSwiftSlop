@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Backgrounds -->
+    <color name="background">#111111</color>
+    <color name="surface">#1e1e1e</color>
+    <color name="bar_bg">#161616</color>
+    <color name="divider">#2a2a2a</color>
+
+    <!-- Text -->
+    <color name="text_primary">#f2f2f2</color>
+    <color name="text_secondary">#6b6b6b</color>
+
+    <!-- Accent -->
+    <color name="accent">#7289da</color>
+    <color name="accent_dark">#5b6eae</color>
+
+    <!-- Bubbles -->
+    <color name="bubble_mine">#5865f2</color>
+    <color name="bubble_other">#2a2a2a</color>
+
+    <!-- Ripple / selection -->
+    <color name="ripple">#22ffffff</color>
+
+    <!-- System bars -->
+    <color name="status_bar">#0d0d0d</color>
+</resources>

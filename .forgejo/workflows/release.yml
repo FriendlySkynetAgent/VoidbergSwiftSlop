@@ -1,0 +1,49 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+jobs:
+  build:
+    runs-on: docker
+    container:
+      image: mingc/android-build-box:latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: decode keystore
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+        run: |
+          echo "$KEYSTORE_BASE64" | base64 -d > /tmp/release.jks
+
+      - name: prepare build file
+        run: cp build-release.gradle app/build.gradle
+
+      - name: build release apk
+        env:
+          JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
+          FLUXER_KEYSTORE: /tmp/release.jks
+          FLUXER_STORE_PASS: ${{ secrets.FLUXER_STORE_PASS }}
+          FLUXER_KEY_ALIAS: ${{ secrets.FLUXER_KEY_ALIAS }}
+          FLUXER_KEY_PASS: ${{ secrets.FLUXER_KEY_PASS }}
+        run: ./gradlew assembleRelease
+
+      - name: create release and upload apk
+        env:
+          TOKEN: ${{ secrets.CODEBERG_TOKEN }}
+          TAG: ${{ github.ref_name }}
+          REPO: ${{ github.repository }}
+        run: |
+          RELEASE_ID=$(curl -sf -X POST \
+            "https://codeberg.org/api/v1/repos/$REPO/releases" \
+            -H "Authorization: token $TOKEN" \
+            -H "Content-Type: application/json" \
+            -d "{\"tag_name\":\"$TAG\",\"name\":\"$TAG\",\"draft\":false}" \
+            | grep -o '"id":[0-9]*' | head -1 | cut -d: -f2)
+
+          curl -sf -X POST \
+            "https://codeberg.org/api/v1/repos/$REPO/releases/$RELEASE_ID/assets" \
+            -H "Authorization: token $TOKEN" \
+            -F "attachment=@app/build/outputs/apk/release/app-release.apk"

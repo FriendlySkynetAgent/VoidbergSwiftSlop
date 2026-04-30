@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application
+        android:name="download.throttled.lvijfc.core.FluxerApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Fluxer">
+        <!-- Login — the entry point -->
+        <activity
+            android:name=".ui.LoginActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- Home — guild list -->
+        <activity
+            android:name=".ui.HomeActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
+            android:screenOrientation="portrait" />
+        <!-- Channel list (guild channels) and DM list — unified -->
+        <activity
+            android:name=".ui.ChannelListActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
+            android:screenOrientation="portrait" />
+        <!-- Messages / chat (guild channels and DMs) -->
+        <activity
+            android:name=".ui.MessagesActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateAlwaysVisible|adjustResize"
+            android:screenOrientation="portrait" />
+    </application>
+</manifest>

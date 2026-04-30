@@ -1,0 +1,13 @@
+# Gradle
+.gradle/
+build/
+**/build/
+app/build.gradle
+
+# Android signing secrets
+*.jks
+*.keystore
+
+# OS
+.DS_Store
+Thumbs.db

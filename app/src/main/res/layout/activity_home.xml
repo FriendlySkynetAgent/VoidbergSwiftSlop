@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Home / guild list.
+  KISS pattern: list fills the screen, bottom bar is the search input.
+  The ⋮ menu button swaps for × when text is present.
+  💬 in the header opens the DM list.
+  line 77 is for "no guilds found"
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <!-- Header strip -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/bar_bg"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/app_name"
+            android:textColor="@color/text_primary"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- Spinner for background loads -->
+        <ProgressBar
+            android:id="@+id/spinner"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="4dp"
+            android:visibility="gone"
+            android:indeterminateTint="@color/accent" />
+
+        <!-- DM button -->
+        <TextView
+            android:id="@+id/dm_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="💬"
+            android:textSize="18sp"
+            android:contentDescription="Direct Messages" />
+
+    </LinearLayout>
+
+    <!-- Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider" />
+
+    <!-- Guild list fills the remaining space -->
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@color/divider"
+        android:dividerHeight="1dp"
+        android:scrollbarStyle="outsideOverlay"
+        android:listSelector="@color/ripple" />
+
+    <!-- Empty state -->
+    <TextView
+        android:id="@android:id/empty"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="Booting up the Fluxer capacitors!"
+        android:textColor="@color/text_secondary"
+        android:textSize="14sp"
+        android:lineSpacingMultiplier="1.5"
+        android:visibility="gone" />
+
+    <!-- Divider above bar -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider" />
+
+    <!-- Bottom search bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/bar_bg"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="12dp">
+
+        <!-- Left side: menu button or clear button -->
+        <TextView
+            android:id="@+id/menu_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="⋮"
+            android:textColor="@color/text_secondary"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/clear_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="×"
+            android:textColor="@color/text_secondary"
+            android:textSize="22sp"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/search_input"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="Filter your servers…"
+            android:inputType="textNoSuggestions"
+            android:imeOptions="actionSearch"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_secondary"
+            android:textSize="15sp"
+            android:paddingHorizontal="8dp"
+            android:singleLine="true" />
+
+    </LinearLayout>
+
+</LinearLayout>
